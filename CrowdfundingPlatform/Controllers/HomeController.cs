@@ -10,9 +10,15 @@ namespace CrowdfundingPlatform.Controllers
 {
     public class HomeController : Controller
     {
+        PlatformDBContext db;
+        public HomeController(PlatformDBContext context)
+        {
+            db = context;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            return View(db.Users.ToList());
         }
 
         public IActionResult About()
